@@ -8,11 +8,11 @@ namespace Mango.Services.ProductAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly DataServices service;
+        private readonly ProductServices service;
 
-        public ProductController(DataServices service)
+        public ProductController(DataServices dataService)
         {
-            this.service = service;
+            this.service = new ProductServices(dataService);
         }
 
         [HttpGet]
