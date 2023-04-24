@@ -12,13 +12,21 @@ namespace Mango.Services.ProductAPI.AppServices
         public IMongoDatabase database;
         public DataServices(IOptions<DataSetting> settings)
         {
-            var linqSettings = MongoClientSettings.FromConnectionString(
-                settings.Value.ConnectionString
-                );
+            try
+            {
+                var linqSettings = MongoClientSettings.FromConnectionString(
+                    settings.Value.ConnectionString
+                    );
 
-            linqSettings.LinqProvider = LinqProvider.V3;
-            client = new MongoClient(linqSettings);
-            database = client.GetDatabase(settings.Value.DatabaseName);
+                linqSettings.LinqProvider = LinqProvider.V3;
+                client = new MongoClient(linqSettings);
+                database = client.GetDatabase(settings.Value.DatabaseName);
+
+            }
+            catch (System.Exception e)
+            {
+                throw (e);
+            }
         }
 
 
