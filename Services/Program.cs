@@ -1,4 +1,7 @@
+using HotChocolate.AspNetCore;
+using HotChocolate.AspNetCore.Playground;
 using Mango.Services.ProductAPI.AppServices;
+using Mango.Services.ProductAPI.GraphqlBasic;
 using Mango.Services.ProductAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +21,16 @@ builder.Services.Configure<DataSetting>(
 );
 builder.Services.AddScoped<DataServices>();
 
+builder.Services.AddScoped<IProductService, ProSer>();
+builder.Services.AddScoped<Query>();
+builder.Services.AddGraphQLServer()
+                /* .AddType<ProductType>() */
+                .AddQueryType<Query>();
+
+/* AddGraphQL(p => SchemaBuilder.New().AddServices(p)
+              .AddType<ProductType>()
+              .AddQueryType<Query>()
+              .Create()); */
 
 builder.Services.AddControllers();
 
@@ -30,12 +43,18 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // app.UseSwagger();
+    // app.UseSwaggerUI();
+    app.UsePlayground(new PlaygroundOptions
+    {
+        QueryPath = "/api",
+        Path = "/playground"
+    });
 }
 
 app.UseHttpsRedirection();
 
+app.MapGraphQL("/api");
 // app.UseRouting();
 
 app.UseAuthorization();
