@@ -21,11 +21,11 @@ builder.Services.Configure<DataSetting>(
 );
 builder.Services.AddScoped<DataServices>();
 
-builder.Services.AddScoped<IProductService, ProSer>();
-builder.Services.AddScoped<Query>();
+// builder.Services.AddScoped<IProductService, ProductService>();
+// builder.Services.AddScoped<ProductQuery>();
 builder.Services.AddGraphQLServer()
-                /* .AddType<ProductType>() */
-                .AddQueryType<Query>();
+                .AddQueryType<ProductQuery>();
+// .AddTypeExtension<ProductQuery>();
 
 /* AddGraphQL(p => SchemaBuilder.New().AddServices(p)
               .AddType<ProductType>()
@@ -35,7 +35,7 @@ builder.Services.AddGraphQLServer()
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 

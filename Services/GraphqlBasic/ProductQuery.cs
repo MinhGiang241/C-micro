@@ -2,19 +2,15 @@ using Mango.Services.ProductAPI.Models;
 
 namespace Mango.Services.ProductAPI.GraphqlBasic
 {
-    public class Query
+    public class ProductQuery
     {
         IProductService _service = null;
-        public Query(IProductService productService)
+        public ProductQuery(IProductService productService)
         {
             _service = productService;
         }
 
         public List<Product> Product => _service.GetProducts();
 
-        public List<Product> GetProducts()
-        {
-            return _service.GetProducts();
-        }
     }
 }

@@ -1,7 +1,7 @@
 using Mango.Services.ProductAPI.GraphqlBasic;
 using Mango.Services.ProductAPI.Models;
 
-public class ProSer : IProductService
+public class ProductService : IProductService
 
 {
     public List<Product> GetProducts()
