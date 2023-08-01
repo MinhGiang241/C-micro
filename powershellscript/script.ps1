@@ -120,7 +120,7 @@
 function Set-Name
 {
   Write-Host("Old Name: $name")
-  $name = 'Tom'
+  $script:name = 'Tom'
   Write-Host "new name: $name"
 }
 
