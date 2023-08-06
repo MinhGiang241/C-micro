@@ -2,6 +2,7 @@
 FROM alpine
 
 # Download and install a dependency
+RUN apk add --update gcc
 RUN apk add --update redis
 
 
