@@ -48,3 +48,5 @@ services:
       - ./worker:/app
     environment:
       - WATCHPACK_POLLING=true
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
