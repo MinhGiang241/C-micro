@@ -12,7 +12,6 @@ namespace Play.Catalog.Service.Controllers
     {
         private readonly IItemsRepository itemsRepository;
 
-
         public ItemsController(IItemsRepository itemsRepository)
         {
             this.itemsRepository = itemsRepository;

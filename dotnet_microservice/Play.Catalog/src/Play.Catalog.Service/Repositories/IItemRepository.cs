@@ -10,4 +10,6 @@ namespace Play.Catalog.Service.Repositories
         Task RemoveAync(Guid id);
         Task updateAsync(Item entity);
     }
+
 }
+

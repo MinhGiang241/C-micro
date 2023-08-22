@@ -13,7 +13,8 @@ BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String))
 
 var serviceSettings = builder.Configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
 
-builder.Services.AddSingleton(serProvider =>
+
+builder.Services.AddSingleton(serprovider =>
 {
     var mongoDbSettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
     var mongoClient = new MongoClient(mongoDbSettings.ConnectionString);
