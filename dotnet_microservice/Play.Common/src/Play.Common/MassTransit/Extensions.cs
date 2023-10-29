@@ -6,7 +6,7 @@ using Play.Common.Settings;
 
 namespace Play.Common.MassTransit
 {
-    public static class Extensions
+    public static class MassExtensions
     {
         public static IServiceCollection AddMassTransitWithRabbitMq(this IServiceCollection services)
         {
